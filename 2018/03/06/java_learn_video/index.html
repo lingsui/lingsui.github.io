@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="最高端的JAVA架构师资源（来自龙果学院 价值￥1399元）、JAVA互联网分布式架构（龙果学院 价值￥899元）、Spring Boot(2017年最新 包括源码原理分析) + Spring Cloud微服务架构(2017年最新 价值￥69和￥299两套实战)、大数据开发（龙果学院 价值￥299元）、Linux运维、MySQL性能调优（这些DB优化都是精华）、多线程高并发详解（龙果学院 价值￥8">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA学习资源分享">
+<meta property="og:url" content="http://yoursite.com/2018/03/06/java_learn_video/index.html">
+<meta property="og:site_name" content="老码农的Java干货资源">
+<meta property="og:description" content="最高端的JAVA架构师资源（来自龙果学院 价值￥1399元）、JAVA互联网分布式架构（龙果学院 价值￥899元）、Spring Boot(2017年最新 包括源码原理分析) + Spring Cloud微服务架构(2017年最新 价值￥69和￥299两套实战)、大数据开发（龙果学院 价值￥299元）、Linux运维、MySQL性能调优（这些DB优化都是精华）、多线程高并发详解（龙果学院 价值￥8">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/totalSize1.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/totalSize2.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/Dubboshiwu1.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/Dubboshiwu2.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/Dubboshiwu3.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/Dubboshiwu4.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/dubbojiagou1.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/dubbojiagou2.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/dubbojiagou3.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/dubbojiagou4.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/dubbojiagou5.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/miaosha1.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/miaosha2.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/miaosha3.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/RocketMq1.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/RocketMq2.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/RocketMq3.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/RocketMq4.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/SpringBoot1.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/Springboot2.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/SpringbootSL.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/SpringBoot.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/springcloudtianqi1.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/springcloudtianqi2.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/gao1.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/gao2.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/gao3.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/gao4.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/mysqlgao1.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/mysqlgao2.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/mysqlgao3.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/mysql.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/mysql1.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/heike.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/SpringBootganhuo.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/SpringCloud51cto.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/SpringCloud1.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/SpringCloud2.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/SpringCloud3.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/dashuju1.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/dashuju2.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/dashuju3.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/hadoop.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/hadoop2.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/mysqlyouhua.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/shiro.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/SSM.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/jvm.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/jiagoushi.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/jiagoushi1.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/mulu.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/fufei.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/fufei2.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/06/java_learn_video/qqqr.jpeg">
+<meta property="og:updated_time" content="2018-03-30T15:00:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JAVA学习资源分享">
+<meta name="twitter:description" content="最高端的JAVA架构师资源（来自龙果学院 价值￥1399元）、JAVA互联网分布式架构（龙果学院 价值￥899元）、Spring Boot(2017年最新 包括源码原理分析) + Spring Cloud微服务架构(2017年最新 价值￥69和￥299两套实战)、大数据开发（龙果学院 价值￥299元）、Linux运维、MySQL性能调优（这些DB优化都是精华）、多线程高并发详解（龙果学院 价值￥8">
+<meta name="twitter:image" content="http://yoursite.com/2018/03/06/java_learn_video/totalSize1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/06/java_learn_video/"/>
+
+
+
+
+
+  <title>JAVA学习资源分享 | 老码农的Java干货资源</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">老码农的Java干货资源</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">JAVA架构师干货资源、目前互联网最主流的技术</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/java_learn_video/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="danqiusheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="老码农的Java干货资源">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JAVA学习资源分享</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-06T09:56:49+08:00">
+                2018-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <font color="red" size="3">最高端的JAVA架构师资源（来自龙果学院 价值￥1399元）、JAVA互联网分布式架构（龙果学院 价值￥899元）、Spring Boot(2017年最新 包括源码原理分析) + Spring Cloud微服务架构(2017年最新 价值￥69和￥299两套实战)、大数据开发（龙果学院 价值￥299元）、Linux运维、MySQL性能调优（这些DB优化都是精华）、多线程高并发详解（龙果学院 价值￥889元）等等超过1500G精品视频！这些资源绝对不是在网上随随便便下载下来的！！！是本人最近走心积累、通过VIP充钱和直接购买别人资源而精心整理出的优质干货，总价值5000多元！<br> </font>
+
+<p><font color="red" size="3"><br>独乐乐不如众乐乐，全部心血精品资源仅仅只需99元！毫无保留全部分享给大家！！！</font></p>
+<font>
+
+<hr>
+<blockquote>
+<p>（公告：资源仅提供学习交流。如侵犯到任何版权问题，请立即告知本人，将及时予与删除并致以最深的歉意!）</p>
+</blockquote>
+<blockquote>
+<p>其实只要我们找对资源，愿意花时间去学习互联网最主流的技术，25K+绝不是吹的！<br> 本人也是程序员一枚， 开发搞了快6年，程序员加班熬夜的苦，我懂！</p>
+</blockquote>
+<h3 id="干货列表（包括如下但不限于以下内容-）"><a href="#干货列表（包括如下但不限于以下内容-）" class="headerlink" title="干货列表（包括如下但不限于以下内容 ）"></a>干货列表（包括如下但不限于以下内容 ）</h3><hr>
+<ul>
+<li>微服务架构的分布式事务解决方案（dubbo分布式事物处理）(来自龙果学院 价值￥1399)</li>
+<li>基于Dubbo分布式系统架构(龙果学院 价值￥899)</li>
+<li>打造扛得住双11激战的MySQL高并发高可用数据库架构(满满的都是干货)</li>
+<li>Java秒杀系统方案优化 高性能高并发实战（介绍多种缓存、分布式session、RabbitMq等）(来自慕课网 价值￥288)</li>
+<li>JAVA-ACE-架构师系列视频课程-RocketMq 2017最新 上下全套精讲(龙果学院 9折 价值￥1222)</li>
+<li>SpringBoot教程全套(龙果学院 价值￥199)</li>
+<li>从天气项目看Spring Cloud微服务治理(慕课网 价值￥299)</li>
+<li>Java并发编程原理与实战(龙果学院 价值￥899 一共63集精华都是你面试的优势！)</li>
+<li>Mysql高级核心技术(尚硅谷 价值￥19)</li>
+<li>大数据实时流统计实战(龙果学院 价值￥299)</li>
+<li>一系列黑客技术精华视频(价值好几千，内容较多，后面截图介绍)</li>
+<li>java架构师资源(24G)(大部分程序员修成正果必经之路)</li>
+<li>Netty、Mina、Nio(Netty异步NIO框架 高并发)</li>
+<li>Redis、MongoDB、Memcached(只会MySQL就out了！NoSQL数据库应用广泛，面试曾被问Redis缓存)</li>
+<li>zookeeper、storm、Solr(zookeeper分布式应用协调系统 拿高薪必会)</li>
+<li>Docker(应用容器，搭配Spring Cloud构建微服务)</li>
+<li>Nginx、LVS+Keepalived</li>
+<li>Openstack、Sca</li>
+<li>JAVA8新特性</li>
+<li>MyCat</li>
+<li>Mysql性能优化(三年经验以上，面试必被问，跑不掉)</li>
+<li>java设计模式、List和Map等集合底层算法原理(三年经验以上，面试必被问)</li>
+<li>深入JVM内核、原理、诊断和优化(三年经验以上，面试必被问)</li>
+<li>多线程(三年经验以上，面试必问：内存模型、内存可见性、volatile、synschonized等)</li>
+<li>Spring、SpringMVC和Mybatis(很多企业都在用SSM框架，代替SSH)</li>
+<li>Linux初中高级运维</li>
+<li>还有很多其他系列高价值的干货，由于篇幅有限，不一一介绍了…如果你想要的视频在这里找不到的话 可以Q我！</li>
+</ul>
+<hr>
+<blockquote>
+<p><strong>童鞋们：<br>程序员有中年危机的主要原因之一是：30岁之后还是只会增删改查…年后不进取继续混日子…<br>每年都有几百万的大学毕业生涌入市场。他们年轻力壮，要求低，能吃苦。<br>如果你安于现状，不去学习最新主流技术时时刻刻保持竞争力，拿什么和年轻人竞争？凭什么拿高薪呢？</strong></p>
+</blockquote>
+<h3 id="资源总大小（超过1500G，请先准备百度云空间哈）"><a href="#资源总大小（超过1500G，请先准备百度云空间哈）" class="headerlink" title="资源总大小（超过1500G，请先准备百度云空间哈）"></a>资源总大小（超过1500G，请先准备百度云空间哈）</h3><p><img src="/2018/03/06/java_learn_video/totalSize1.png" alt="总共大小"><br><img src="/2018/03/06/java_learn_video/totalSize2.png" alt="总共大小"></p>
+<blockquote>
+<p>注意!<br>以下是本人最近精心整理的资源，现在狂甩出来</p>
+</blockquote>
+<h3 id="部分资源截图"><a href="#部分资源截图" class="headerlink" title="部分资源截图"></a>部分资源截图</h3><ul>
+<li><p>以下是微服务架构的分布式事务解决方案（dubbo分布式事物处理），原地址：<a href="http://www.roncoo.com/course/view/7ae3d7eddc4742f78b0548aa8bd9ccdb" target="_blank" rel="noopener">http://www.roncoo.com/course/view/7ae3d7eddc4742f78b0548aa8bd9ccdb</a><br><img src="/2018/03/06/java_learn_video/Dubboshiwu1.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/Dubboshiwu2.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/Dubboshiwu3.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/Dubboshiwu4.png" alt="Markdown"></p>
+</li>
+<li><p>以下是基于Dubbo的分布式系统架构实战，原地址：<a href="http://www.roncoo.com/course/view/85d6008fe77c4199b0cdd2885eaeee53#boxTwo" target="_blank" rel="noopener">http://www.roncoo.com/course/view/85d6008fe77c4199b0cdd2885eaeee53#boxTwo</a><br><img src="/2018/03/06/java_learn_video/dubbojiagou1.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/dubbojiagou2.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/dubbojiagou3.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/dubbojiagou4.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/dubbojiagou5.png" alt="Markdown"></p>
+</li>
+<li><p>以下是Java秒杀系统方案优化 高性能高并发实战（介绍多种缓存、分布式session、RabbitMq等），原地址：<a href="http://coding.imooc.com/class/168.html" target="_blank" rel="noopener">http://coding.imooc.com/class/168.html</a><br><img src="/2018/03/06/java_learn_video/miaosha1.jpg" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/miaosha2.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/miaosha3.png" alt="Markdown"> </p>
+</li>
+<li><p>以下是JAVA-ACE-架构师系列视频课程-RocketMq 2017最新 上下全套精讲，原地址：<a href="http://edu.51cto.com/topic/1028.html" target="_blank" rel="noopener">http://edu.51cto.com/topic/1028.html</a></p>
+</li>
+</ul>
+<p><img src="/2018/03/06/java_learn_video/RocketMq1.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/RocketMq2.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/RocketMq3.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/RocketMq4.png" alt="Markdown"></p>
+<ul>
+<li><p>以下是SpringBoot教程全套，原地址：<a href="http://www.roncoo.com/course/view/c99516ea604d4053908c1768d6deee3d#boxTwo" target="_blank" rel="noopener">http://www.roncoo.com/course/view/c99516ea604d4053908c1768d6deee3d#boxTwo</a><br><img src="/2018/03/06/java_learn_video/SpringBoot1.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/Springboot2.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/SpringbootSL.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/SpringBoot.png" alt="Markdown"></p>
+</li>
+<li><p>以下是从天气项目看Spring Cloud微服务治理，原地址：<a href="http://coding.imooc.com/class/177.html?mc_marking=a7b3119105f0cbb234506fc15f6bfbc4&amp;mc_channel=syb8" target="_blank" rel="noopener">http://coding.imooc.com/class/177.html?mc_marking=a7b3119105f0cbb234506fc15f6bfbc4&amp;mc_channel=syb8</a></p>
+</li>
+</ul>
+<p><img src="/2018/03/06/java_learn_video/springcloudtianqi1.jpg" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/springcloudtianqi2.png" alt="Markdown"></p>
+<ul>
+<li>以下是Java并发编程原理与实战，原地址：<a href="http://www.roncoo.com/course/view/b6f89747a8284f44838b2c4da6c8677b" target="_blank" rel="noopener">http://www.roncoo.com/course/view/b6f89747a8284f44838b2c4da6c8677b</a></li>
+</ul>
+<p><img src="/2018/03/06/java_learn_video/gao1.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/gao2.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/gao3.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/gao4.png" alt="Markdown"> </p>
+<ul>
+<li><p>以下是Mysql高级核心技术<br><img src="/2018/03/06/java_learn_video/mysqlgao1.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/mysqlgao2.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/mysqlgao3.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/mysql.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/mysql1.png" alt="Markdown"> </p>
+</li>
+<li><p>以下是一系列黑客技术精华视频 价值好几千!<br><img src="/2018/03/06/java_learn_video/heike.png" alt="Markdown">  </p>
+</li>
+<li><p>以下是SpringBoot精品视频，资源是2017年最新的！（限于篇幅，不一一截图介绍了）</p>
+</li>
+</ul>
+<blockquote>
+<p>SpringBoot企业级博客系统实战视频教程（价值￥348） 原地址:<a href="http://coding.imooc.com/class/125.html" target="_blank" rel="noopener">http://coding.imooc.com/class/125.html</a><br>spring boot企业微信点餐系统（价值￥348） 原地址:<a href="http://coding.imooc.com/class/117.html" target="_blank" rel="noopener">http://coding.imooc.com/class/117.html</a><br>Spring Boot实战与原理分析视频课程（价值￥359） 原地址:<a href="http://edu.51cto.com/course/6558.html" target="_blank" rel="noopener">http://edu.51cto.com/course/6558.html</a><br>SSM到Spring Boot-从零开发校园商铺平台（价值￥299） 原地址:<a href="http://coding.imooc.com/class/144.html" target="_blank" rel="noopener">http://coding.imooc.com/class/144.html</a><br>龙果学院 Spring Boot教程全集（价值￥199） 原地址:<a href="http://www.roncoo.com/course/view/c99516ea604d4053908c1768d6deee3d#boxTwo" target="_blank" rel="noopener">http://www.roncoo.com/course/view/c99516ea604d4053908c1768d6deee3d#boxTwo</a></p>
+</blockquote>
+<p><img src="/2018/03/06/java_learn_video/SpringBootganhuo.png" alt="Markdown">  </p>
+<ul>
+<li>以下是在51CTO花62块购买的SpringCloud干货，也是2017年最新的！原地址： <a href="http://edu.51cto.com/course/7348.html" target="_blank" rel="noopener">http://edu.51cto.com/course/7348.html</a></li>
+</ul>
+<p><img src="/2018/03/06/java_learn_video/SpringCloud51cto.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/SpringCloud1.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/SpringCloud2.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/SpringCloud3.png" alt="Markdown">  </p>
+<ul>
+<li>以下是大数据实时流统计实战，原地址：<a href="http://www.roncoo.com/course/view/1b1a07091acc4efd9a390f28db332f86" target="_blank" rel="noopener">http://www.roncoo.com/course/view/1b1a07091acc4efd9a390f28db332f86</a></li>
+</ul>
+<p><img src="/2018/03/06/java_learn_video/dashuju1.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/dashuju2.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/dashuju3.png" alt="Markdown">  </p>
+<ul>
+<li>以下是Hadoop Spark精品视频<br><img src="/2018/03/06/java_learn_video/hadoop.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/hadoop2.png" alt="Markdown"> </li>
+</ul>
+<ul>
+<li>篇幅有限；只能部分目录截图</li>
+</ul>
+<p><img src="/2018/03/06/java_learn_video/mysqlyouhua.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/shiro.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/SSM.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/jvm.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/jiagoushi.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/jiagoushi1.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/mulu.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/fufei.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/fufei2.png" alt="Markdown"></p>
+<hr>
+<blockquote>
+<p>卖家承诺：绝对不是随随便便在网上下载的资源，通用播放器都可以看，没有加密！看书，只是理解(对于新手 关键的地方不一定能get到)，少了可视化的实践练手，看书一周后就不记得了。效率略低，深有体会。真心没有视频手把手教学跟着练手做项目学得快！看视频入门后再去看书，会事半功倍！跟着视频学习是略慢，但学到的就是经验了！</p>
+</blockquote>
+<blockquote>
+<p>这些优质资源都是本人花钱买的！总价值5000多干货，全部资源只需99元！99块这点学习投资费都不够请朋友吃半餐饭钱</p>
+</blockquote>
+<!-- ![Markdown](java_learn_video/qqqr.jpeg = 200x) -->
+<h3 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h3><p><strong><em> 有意向请联系小Q：1285531788，付款后立马百度云发货哈！</em></strong></p>
+<p><img src="/2018/03/06/java_learn_video/qqqr.jpeg" width="200"></p>
+<blockquote>
+<p>绝不做骗钱不发货犯法的事，由于篇幅有限，其他很多干货还没有介绍哦！</p>
+</blockquote>
+<blockquote>
+<p>如果你想要的视频在这里找不到的话 可以Q我！欢迎试看视频！怕被骗或者非诚心购买者勿扰</p>
+</blockquote>
+<p><center>  祝早日拿到高薪offer! </center></p>
+</font>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/07/JVM启动过程/" rel="prev" title="JVM启动过程">
+                JVM启动过程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">danqiusheng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#干货列表（包括如下但不限于以下内容-）"><span class="nav-number">1.</span> <span class="nav-text">干货列表（包括如下但不限于以下内容 ）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资源总大小（超过1500G，请先准备百度云空间哈）"><span class="nav-number">2.</span> <span class="nav-text">资源总大小（超过1500G，请先准备百度云空间哈）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部分资源截图"><span class="nav-number">3.</span> <span class="nav-text">部分资源截图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#联系方式"><span class="nav-number">4.</span> <span class="nav-text">联系方式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">danqiusheng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JVM," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="你知道哪些或者你们线上使⽤什么GC策略? 它有什么优势，适⽤于什么 场景？ 参考 触发JVM进行Full GC的情况及应对策略  JAVA类加载器包括⼏种？它们之间的⽗⼦关系是怎么样的？双亲委派机 制是什么意思？有什么好处 启动Bootstrap类加载、扩展Extension类加载、系统System类加载；   启动类加载器 ，由C++ 实现，没有父类 扩展类加载器，由Java语言实现，父类加载器">
+<meta name="keywords" content="JVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM面试题">
+<meta property="og:url" content="http://yoursite.com/2018/03/30/JVM面试题/index.html">
+<meta property="og:site_name" content="老码农的Java干货资源">
+<meta property="og:description" content="你知道哪些或者你们线上使⽤什么GC策略? 它有什么优势，适⽤于什么 场景？ 参考 触发JVM进行Full GC的情况及应对策略  JAVA类加载器包括⼏种？它们之间的⽗⼦关系是怎么样的？双亲委派机 制是什么意思？有什么好处 启动Bootstrap类加载、扩展Extension类加载、系统System类加载；   启动类加载器 ，由C++ 实现，没有父类 扩展类加载器，由Java语言实现，父类加载器">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-30T08:55:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JVM面试题">
+<meta name="twitter:description" content="你知道哪些或者你们线上使⽤什么GC策略? 它有什么优势，适⽤于什么 场景？ 参考 触发JVM进行Full GC的情况及应对策略  JAVA类加载器包括⼏种？它们之间的⽗⼦关系是怎么样的？双亲委派机 制是什么意思？有什么好处 启动Bootstrap类加载、扩展Extension类加载、系统System类加载；   启动类加载器 ，由C++ 实现，没有父类 扩展类加载器，由Java语言实现，父类加载器">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/30/JVM面试题/"/>
+
+
+
+
+
+  <title>JVM面试题 | 老码农的Java干货资源</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">老码农的Java干货资源</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">JAVA架构师干货资源、目前互联网最主流的技术</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/JVM面试题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="danqiusheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="老码农的Java干货资源">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JVM面试题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T16:55:37+08:00">
+                2018-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="你知道哪些或者你们线上使⽤什么GC策略-它有什么优势，适⽤于什么-场景？"><a href="#你知道哪些或者你们线上使⽤什么GC策略-它有什么优势，适⽤于什么-场景？" class="headerlink" title="你知道哪些或者你们线上使⽤什么GC策略? 它有什么优势，适⽤于什么 场景？"></a>你知道哪些或者你们线上使⽤什么GC策略? 它有什么优势，适⽤于什么 场景？</h5><blockquote>
+<p>参考 <a href="https://blog.csdn.net/chenleixing/article/details/46706039/" target="_blank" rel="noopener">触发JVM进行Full GC的情况及应对策略</a></p>
+</blockquote>
+<h5 id="JAVA类加载器包括⼏种？它们之间的⽗⼦关系是怎么样的？双亲委派机-制是什么意思？有什么好处"><a href="#JAVA类加载器包括⼏种？它们之间的⽗⼦关系是怎么样的？双亲委派机-制是什么意思？有什么好处" class="headerlink" title="JAVA类加载器包括⼏种？它们之间的⽗⼦关系是怎么样的？双亲委派机 制是什么意思？有什么好处"></a>JAVA类加载器包括⼏种？它们之间的⽗⼦关系是怎么样的？双亲委派机 制是什么意思？有什么好处</h5><blockquote>
+<p>启动Bootstrap类加载、扩展Extension类加载、系统System类加载；</p>
+</blockquote>
+<ul>
+<li><strong>启动类加载器 ，由C++ 实现，没有父类</strong></li>
+<li><strong>扩展类加载器，由Java语言实现，父类加载器为null</strong></li>
+<li><p><strong>系统类加载器，由Java语言实现，父类加载器为扩展类加载器</strong></p>
+</li>
+<li><p><strong>自定义类加载器，父类加载器肯定为AppClassLoader</strong></p>
+<blockquote>
+<p>类加载器收到类加载请求，自己不加载，向上委托给父类加载，父类加载不了，再自己加载</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>优势避免Java核心API篡改</p>
+</blockquote>
+<blockquote>
+<p>详细查看<a href="https://blog.csdn.net/javazejian/article/details/73413292/" target="_blank" rel="noopener">：深入理解Java类加载器(ClassLoader)</a></p>
+</blockquote>
+<h5 id="如何⾃定义⼀个类加载器？你使⽤过哪些或者你在什么场景下需要⼀个⾃-定义的类加载器吗？"><a href="#如何⾃定义⼀个类加载器？你使⽤过哪些或者你在什么场景下需要⼀个⾃-定义的类加载器吗？" class="headerlink" title="如何⾃定义⼀个类加载器？你使⽤过哪些或者你在什么场景下需要⼀个⾃ 定义的类加载器吗？"></a>如何⾃定义⼀个类加载器？你使⽤过哪些或者你在什么场景下需要⼀个⾃ 定义的类加载器吗？</h5><blockquote>
+<p>自定义类加载的意义：</p>
+</blockquote>
+<blockquote>
+<p>1、加载特定路径的class文件</p>
+</blockquote>
+<blockquote>
+<p>2、加载一个加密的网络class文件</p>
+</blockquote>
+<blockquote>
+<p>3、热部署加载class文件</p>
+</blockquote>
+<h5 id="堆内存设置的参数是什么？"><a href="#堆内存设置的参数是什么？" class="headerlink" title="堆内存设置的参数是什么？"></a>堆内存设置的参数是什么？</h5><blockquote>
+<p>-Xmx 设置堆的最大空间大小</p>
+</blockquote>
+<blockquote>
+<p>-Xms 设置堆的最小空间大小</p>
+</blockquote>
+<h5 id="Perm-Space中保存什么数据-会引起OutOfMemory吗？"><a href="#Perm-Space中保存什么数据-会引起OutOfMemory吗？" class="headerlink" title="Perm Space中保存什么数据?会引起OutOfMemory吗？"></a>Perm Space中保存什么数据?会引起OutOfMemory吗？</h5><blockquote>
+<p>加载class文件</p>
+</blockquote>
+<blockquote>
+<p>会引起，出现异常可以设置 -XX:PermSize 的大小</p>
+</blockquote>
+<blockquote>
+<p>jdk 1.8后 字符串常量不存放在永久带，而是在堆内存中，jdk8以后没有永久带概念，而是用元空间替代，元空间不存在虚拟机中，二是使用本地内存</p>
+</blockquote>
+<blockquote>
+<p>详细查看 <a href="https://www.cnblogs.com/paddix/p/5309550.html/" target="_blank" rel="noopener">Java8内存模型—永久代(PermGen)和元空间(Metaspace)</a></p>
+</blockquote>
+<h5 id="做gc时，⼀个对象在内存各个Space中被移动的顺序是什么？"><a href="#做gc时，⼀个对象在内存各个Space中被移动的顺序是什么？" class="headerlink" title="做gc时，⼀个对象在内存各个Space中被移动的顺序是什么？"></a>做gc时，⼀个对象在内存各个Space中被移动的顺序是什么？</h5><blockquote>
+<p>标记清除法，复制算法，标记整理、分代算法</p>
+</blockquote>
+<blockquote>
+<p>新生代一般采用复制算法GC;老年代使用标记整理算法</p>
+</blockquote>
+<blockquote>
+<p>垃圾收集器:串行新生代收集器、串行老生代收集器、并行新生代收集器、并行老年代收集器</p>
+</blockquote>
+<blockquote>
+<p>CMS（Current Mark Sweep）收集器是一种以获取最短回收停顿时间为目标的收集器，它是一种并发收集器，采用的是Mark-Sweep算法。</p>
+</blockquote>
+<blockquote>
+<p>详见 <a href="http://www.cnblogs.com/dolphin0520/p/3783345.htmll/" target="_blank" rel="noopener">Java GC机制</a></p>
+</blockquote>
+<h5 id="你有没有遇到过OutOfMemory问题？你是怎么来处理这个问题的？处理-过程中有哪些收获？"><a href="#你有没有遇到过OutOfMemory问题？你是怎么来处理这个问题的？处理-过程中有哪些收获？" class="headerlink" title="你有没有遇到过OutOfMemory问题？你是怎么来处理这个问题的？处理 过程中有哪些收获？"></a>你有没有遇到过OutOfMemory问题？你是怎么来处理这个问题的？处理 过程中有哪些收获？</h5><blockquote>
+<p>permgen space ,heap space 错误<br><strong> 常见的原因 </strong><br>内存加载的数据量太大：一次性从数据库取太多数据 </p>
+</blockquote>
+<blockquote>
+<p>集合类中有对对象的引用，使用后未清空，GC不能进行回收。</p>
+</blockquote>
+<blockquote>
+<p>代码中存在循环产生过多的重复对象</p>
+</blockquote>
+<blockquote>
+<p>启动参数堆内存值小 </p>
+</blockquote>
+<blockquote>
+<p>详见 <a href="http://outofmemory.cn/c/java-outOfMemoryError/" target="_blank" rel="noopener">Java 内存溢出（java.lang.OutOfMemoryError）的常见情况和处理方式总结</a></p>
+</blockquote>
+<h5 id="1-8之后Perm-Space有哪些变动-MetaSpace⼤⼩默认是⽆限的么-还是-你们会通过什么⽅式来指定⼤⼩"><a href="#1-8之后Perm-Space有哪些变动-MetaSpace⼤⼩默认是⽆限的么-还是-你们会通过什么⽅式来指定⼤⼩" class="headerlink" title="1.8之后Perm Space有哪些变动? MetaSpace⼤⼩默认是⽆限的么? 还是 你们会通过什么⽅式来指定⼤⼩?"></a>1.8之后Perm Space有哪些变动? MetaSpace⼤⼩默认是⽆限的么? 还是 你们会通过什么⽅式来指定⼤⼩?</h5><blockquote>
+<p>jdk1.8后用元空间替代了 Perm Space；字符串常量存放到堆内存中</p>
+</blockquote>
+<blockquote>
+<p>MetaSpace大小默认没有限制，一般根据系统内存的大小；JVM会动态改变此值</p>
+</blockquote>
+<blockquote>
+<p>-XX:MetaspaceSize是分配给类元数据空间（以字节计）的初始大小(Oracle逻辑存储上的初始高水位，the initial high-water-mark )，此值为估计值。MetaspaceSize的值设置的过大会延长垃圾回收时间。垃圾回收过后，引起下一次垃圾回收的类元数据空间的大小可能会变大。</p>
+</blockquote>
+<blockquote>
+<p>-XX:MaxMetaspaceSize是分配给类元数据空间的最大值，超过此值就会触发Full GC，此值默认没有限制，但应取决于系统内存的大小。JVM会动态地改变此值。</p>
+</blockquote>
+<h5 id="Jstack是⼲什么的-Jstat呢-如果线上程序周期性地出现卡顿，你怀疑可-能是gc导致的，你会怎么来排查这个问题？线程⽇志⼀般你会看其中的什么-部分？"><a href="#Jstack是⼲什么的-Jstat呢-如果线上程序周期性地出现卡顿，你怀疑可-能是gc导致的，你会怎么来排查这个问题？线程⽇志⼀般你会看其中的什么-部分？" class="headerlink" title="Jstack是⼲什么的? Jstat呢? 如果线上程序周期性地出现卡顿，你怀疑可 能是gc导致的，你会怎么来排查这个问题？线程⽇志⼀般你会看其中的什么 部分？"></a>Jstack是⼲什么的? Jstat呢? 如果线上程序周期性地出现卡顿，你怀疑可 能是gc导致的，你会怎么来排查这个问题？线程⽇志⼀般你会看其中的什么 部分？</h5><blockquote>
+<p>Jstack用来查询java进程的堆栈信息<br>jvisualvm 监控内存泄露，跟踪垃圾回收，执行时内存、cpu分析，线程分析;详见<a href="https://blog.csdn.net/a19881029/article/details/8432368/" target="_blank" rel="noopener">Java jvisualvm简要说明</a></p>
+</blockquote>
+<blockquote>
+<p>可参考 <a href="https://blog.csdn.net/wilsonpeng3/article/details/70064336/" target="_blank" rel="noopener">线上FullGC频繁的排查</a></p>
+</blockquote>
+<h5 id="StackOverFlow异常有没有遇到过？⼀般你猜测会在什么情况下被触-发？如何指定⼀个线程的堆栈⼤⼩？⼀般你们写多少？"><a href="#StackOverFlow异常有没有遇到过？⼀般你猜测会在什么情况下被触-发？如何指定⼀个线程的堆栈⼤⼩？⼀般你们写多少？" class="headerlink" title="StackOverFlow异常有没有遇到过？⼀般你猜测会在什么情况下被触 发？如何指定⼀个线程的堆栈⼤⼩？⼀般你们写多少？"></a>StackOverFlow异常有没有遇到过？⼀般你猜测会在什么情况下被触 发？如何指定⼀个线程的堆栈⼤⼩？⼀般你们写多少？</h5><blockquote>
+<p>栈内存溢出，一般由栈内存的局部变量过爆了，导致内存溢出，出现在递归方法，参数个数过多，递归过深，递归没有出口</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>答案如有不正确，还请各位指正</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JVM/" rel="tag"># JVM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/08/JVM基本结构、内存模块/" rel="next" title="JVM基本结构、内存模型">
+                <i class="fa fa-chevron-left"></i> JVM基本结构、内存模型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">danqiusheng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#你知道哪些或者你们线上使⽤什么GC策略-它有什么优势，适⽤于什么-场景？"><span class="nav-number">1.</span> <span class="nav-text">你知道哪些或者你们线上使⽤什么GC策略? 它有什么优势，适⽤于什么 场景？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#JAVA类加载器包括⼏种？它们之间的⽗⼦关系是怎么样的？双亲委派机-制是什么意思？有什么好处"><span class="nav-number">2.</span> <span class="nav-text">JAVA类加载器包括⼏种？它们之间的⽗⼦关系是怎么样的？双亲委派机 制是什么意思？有什么好处</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#如何⾃定义⼀个类加载器？你使⽤过哪些或者你在什么场景下需要⼀个⾃-定义的类加载器吗？"><span class="nav-number">3.</span> <span class="nav-text">如何⾃定义⼀个类加载器？你使⽤过哪些或者你在什么场景下需要⼀个⾃ 定义的类加载器吗？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#堆内存设置的参数是什么？"><span class="nav-number">4.</span> <span class="nav-text">堆内存设置的参数是什么？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Perm-Space中保存什么数据-会引起OutOfMemory吗？"><span class="nav-number">5.</span> <span class="nav-text">Perm Space中保存什么数据?会引起OutOfMemory吗？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#做gc时，⼀个对象在内存各个Space中被移动的顺序是什么？"><span class="nav-number">6.</span> <span class="nav-text">做gc时，⼀个对象在内存各个Space中被移动的顺序是什么？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#你有没有遇到过OutOfMemory问题？你是怎么来处理这个问题的？处理-过程中有哪些收获？"><span class="nav-number">7.</span> <span class="nav-text">你有没有遇到过OutOfMemory问题？你是怎么来处理这个问题的？处理 过程中有哪些收获？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-8之后Perm-Space有哪些变动-MetaSpace⼤⼩默认是⽆限的么-还是-你们会通过什么⽅式来指定⼤⼩"><span class="nav-number">8.</span> <span class="nav-text">1.8之后Perm Space有哪些变动? MetaSpace⼤⼩默认是⽆限的么? 还是 你们会通过什么⽅式来指定⼤⼩?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Jstack是⼲什么的-Jstat呢-如果线上程序周期性地出现卡顿，你怀疑可-能是gc导致的，你会怎么来排查这个问题？线程⽇志⼀般你会看其中的什么-部分？"><span class="nav-number">9.</span> <span class="nav-text">Jstack是⼲什么的? Jstat呢? 如果线上程序周期性地出现卡顿，你怀疑可 能是gc导致的，你会怎么来排查这个问题？线程⽇志⼀般你会看其中的什么 部分？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#StackOverFlow异常有没有遇到过？⼀般你猜测会在什么情况下被触-发？如何指定⼀个线程的堆栈⼤⼩？⼀般你们写多少？"><span class="nav-number">10.</span> <span class="nav-text">StackOverFlow异常有没有遇到过？⼀般你猜测会在什么情况下被触 发？如何指定⼀个线程的堆栈⼤⼩？⼀般你们写多少？</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">danqiusheng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
