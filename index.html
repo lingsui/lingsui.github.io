@@ -242,7 +242,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/JVM面试题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="danqiusheng">
+      <meta itemprop="name" content="老码农">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -310,116 +310,19 @@
       
         
           
-            <h5 id="你知道哪些或者你们线上使⽤什么GC策略-它有什么优势，适⽤于什么-场景？"><a href="#你知道哪些或者你们线上使⽤什么GC策略-它有什么优势，适⽤于什么-场景？" class="headerlink" title="你知道哪些或者你们线上使⽤什么GC策略? 它有什么优势，适⽤于什么 场景？"></a>你知道哪些或者你们线上使⽤什么GC策略? 它有什么优势，适⽤于什么 场景？</h5><blockquote>
-<p>参考 <a href="https://blog.csdn.net/chenleixing/article/details/46706039/" target="_blank" rel="noopener">触发JVM进行Full GC的情况及应对策略</a></p>
-</blockquote>
-<h5 id="JAVA类加载器包括⼏种？它们之间的⽗⼦关系是怎么样的？双亲委派机-制是什么意思？有什么好处"><a href="#JAVA类加载器包括⼏种？它们之间的⽗⼦关系是怎么样的？双亲委派机-制是什么意思？有什么好处" class="headerlink" title="JAVA类加载器包括⼏种？它们之间的⽗⼦关系是怎么样的？双亲委派机 制是什么意思？有什么好处"></a>JAVA类加载器包括⼏种？它们之间的⽗⼦关系是怎么样的？双亲委派机 制是什么意思？有什么好处</h5><blockquote>
-<p>启动Bootstrap类加载、扩展Extension类加载、系统System类加载；</p>
-</blockquote>
-<ul>
-<li><strong>启动类加载器 ，由C++ 实现，没有父类</strong></li>
-<li><strong>扩展类加载器，由Java语言实现，父类加载器为null</strong></li>
-<li><p><strong>系统类加载器，由Java语言实现，父类加载器为扩展类加载器</strong></p>
-</li>
-<li><p><strong>自定义类加载器，父类加载器肯定为AppClassLoader</strong></p>
-<blockquote>
-<p>类加载器收到类加载请求，自己不加载，向上委托给父类加载，父类加载不了，再自己加载</p>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>优势避免Java核心API篡改</p>
-</blockquote>
-<blockquote>
-<p>详细查看<a href="https://blog.csdn.net/javazejian/article/details/73413292/" target="_blank" rel="noopener">：深入理解Java类加载器(ClassLoader)</a></p>
-</blockquote>
-<h5 id="如何⾃定义⼀个类加载器？你使⽤过哪些或者你在什么场景下需要⼀个⾃-定义的类加载器吗？"><a href="#如何⾃定义⼀个类加载器？你使⽤过哪些或者你在什么场景下需要⼀个⾃-定义的类加载器吗？" class="headerlink" title="如何⾃定义⼀个类加载器？你使⽤过哪些或者你在什么场景下需要⼀个⾃ 定义的类加载器吗？"></a>如何⾃定义⼀个类加载器？你使⽤过哪些或者你在什么场景下需要⼀个⾃ 定义的类加载器吗？</h5><blockquote>
-<p>自定义类加载的意义：</p>
-</blockquote>
-<blockquote>
-<p>1、加载特定路径的class文件</p>
-</blockquote>
-<blockquote>
-<p>2、加载一个加密的网络class文件</p>
-</blockquote>
-<blockquote>
-<p>3、热部署加载class文件</p>
-</blockquote>
-<h5 id="堆内存设置的参数是什么？"><a href="#堆内存设置的参数是什么？" class="headerlink" title="堆内存设置的参数是什么？"></a>堆内存设置的参数是什么？</h5><blockquote>
-<p>-Xmx 设置堆的最大空间大小</p>
-</blockquote>
-<blockquote>
-<p>-Xms 设置堆的最小空间大小</p>
-</blockquote>
-<h5 id="Perm-Space中保存什么数据-会引起OutOfMemory吗？"><a href="#Perm-Space中保存什么数据-会引起OutOfMemory吗？" class="headerlink" title="Perm Space中保存什么数据?会引起OutOfMemory吗？"></a>Perm Space中保存什么数据?会引起OutOfMemory吗？</h5><blockquote>
-<p>加载class文件</p>
-</blockquote>
-<blockquote>
-<p>会引起，出现异常可以设置 -XX:PermSize 的大小</p>
-</blockquote>
-<blockquote>
-<p>jdk 1.8后 字符串常量不存放在永久带，而是在堆内存中，jdk8以后没有永久带概念，而是用元空间替代，元空间不存在虚拟机中，二是使用本地内存</p>
-</blockquote>
-<blockquote>
-<p>详细查看 <a href="https://www.cnblogs.com/paddix/p/5309550.html/" target="_blank" rel="noopener">Java8内存模型—永久代(PermGen)和元空间(Metaspace)</a></p>
-</blockquote>
-<h5 id="做gc时，⼀个对象在内存各个Space中被移动的顺序是什么？"><a href="#做gc时，⼀个对象在内存各个Space中被移动的顺序是什么？" class="headerlink" title="做gc时，⼀个对象在内存各个Space中被移动的顺序是什么？"></a>做gc时，⼀个对象在内存各个Space中被移动的顺序是什么？</h5><blockquote>
-<p>标记清除法，复制算法，标记整理、分代算法</p>
-</blockquote>
-<blockquote>
-<p>新生代一般采用复制算法GC;老年代使用标记整理算法</p>
-</blockquote>
-<blockquote>
-<p>垃圾收集器:串行新生代收集器、串行老生代收集器、并行新生代收集器、并行老年代收集器</p>
-</blockquote>
-<blockquote>
-<p>CMS（Current Mark Sweep）收集器是一种以获取最短回收停顿时间为目标的收集器，它是一种并发收集器，采用的是Mark-Sweep算法。</p>
-</blockquote>
-<blockquote>
-<p>详见 <a href="http://www.cnblogs.com/dolphin0520/p/3783345.htmll/" target="_blank" rel="noopener">Java GC机制</a></p>
-</blockquote>
-<h5 id="你有没有遇到过OutOfMemory问题？你是怎么来处理这个问题的？处理-过程中有哪些收获？"><a href="#你有没有遇到过OutOfMemory问题？你是怎么来处理这个问题的？处理-过程中有哪些收获？" class="headerlink" title="你有没有遇到过OutOfMemory问题？你是怎么来处理这个问题的？处理 过程中有哪些收获？"></a>你有没有遇到过OutOfMemory问题？你是怎么来处理这个问题的？处理 过程中有哪些收获？</h5><blockquote>
-<p>permgen space ,heap space 错误<br><strong> 常见的原因 </strong><br>内存加载的数据量太大：一次性从数据库取太多数据 </p>
-</blockquote>
-<blockquote>
-<p>集合类中有对对象的引用，使用后未清空，GC不能进行回收。</p>
-</blockquote>
-<blockquote>
-<p>代码中存在循环产生过多的重复对象</p>
-</blockquote>
-<blockquote>
-<p>启动参数堆内存值小 </p>
-</blockquote>
-<blockquote>
-<p>详见 <a href="http://outofmemory.cn/c/java-outOfMemoryError/" target="_blank" rel="noopener">Java 内存溢出（java.lang.OutOfMemoryError）的常见情况和处理方式总结</a></p>
-</blockquote>
-<h5 id="1-8之后Perm-Space有哪些变动-MetaSpace⼤⼩默认是⽆限的么-还是-你们会通过什么⽅式来指定⼤⼩"><a href="#1-8之后Perm-Space有哪些变动-MetaSpace⼤⼩默认是⽆限的么-还是-你们会通过什么⽅式来指定⼤⼩" class="headerlink" title="1.8之后Perm Space有哪些变动? MetaSpace⼤⼩默认是⽆限的么? 还是 你们会通过什么⽅式来指定⼤⼩?"></a>1.8之后Perm Space有哪些变动? MetaSpace⼤⼩默认是⽆限的么? 还是 你们会通过什么⽅式来指定⼤⼩?</h5><blockquote>
-<p>jdk1.8后用元空间替代了 Perm Space；字符串常量存放到堆内存中</p>
-</blockquote>
-<blockquote>
-<p>MetaSpace大小默认没有限制，一般根据系统内存的大小；JVM会动态改变此值</p>
-</blockquote>
-<blockquote>
-<p>-XX:MetaspaceSize是分配给类元数据空间（以字节计）的初始大小(Oracle逻辑存储上的初始高水位，the initial high-water-mark )，此值为估计值。MetaspaceSize的值设置的过大会延长垃圾回收时间。垃圾回收过后，引起下一次垃圾回收的类元数据空间的大小可能会变大。</p>
-</blockquote>
-<blockquote>
-<p>-XX:MaxMetaspaceSize是分配给类元数据空间的最大值，超过此值就会触发Full GC，此值默认没有限制，但应取决于系统内存的大小。JVM会动态地改变此值。</p>
-</blockquote>
-<h5 id="Jstack是⼲什么的-Jstat呢-如果线上程序周期性地出现卡顿，你怀疑可-能是gc导致的，你会怎么来排查这个问题？线程⽇志⼀般你会看其中的什么-部分？"><a href="#Jstack是⼲什么的-Jstat呢-如果线上程序周期性地出现卡顿，你怀疑可-能是gc导致的，你会怎么来排查这个问题？线程⽇志⼀般你会看其中的什么-部分？" class="headerlink" title="Jstack是⼲什么的? Jstat呢? 如果线上程序周期性地出现卡顿，你怀疑可 能是gc导致的，你会怎么来排查这个问题？线程⽇志⼀般你会看其中的什么 部分？"></a>Jstack是⼲什么的? Jstat呢? 如果线上程序周期性地出现卡顿，你怀疑可 能是gc导致的，你会怎么来排查这个问题？线程⽇志⼀般你会看其中的什么 部分？</h5><blockquote>
-<p>Jstack用来查询java进程的堆栈信息<br>jvisualvm 监控内存泄露，跟踪垃圾回收，执行时内存、cpu分析，线程分析;详见<a href="https://blog.csdn.net/a19881029/article/details/8432368/" target="_blank" rel="noopener">Java jvisualvm简要说明</a></p>
-</blockquote>
-<blockquote>
-<p>可参考 <a href="https://blog.csdn.net/wilsonpeng3/article/details/70064336/" target="_blank" rel="noopener">线上FullGC频繁的排查</a></p>
-</blockquote>
-<h5 id="StackOverFlow异常有没有遇到过？⼀般你猜测会在什么情况下被触-发？如何指定⼀个线程的堆栈⼤⼩？⼀般你们写多少？"><a href="#StackOverFlow异常有没有遇到过？⼀般你猜测会在什么情况下被触-发？如何指定⼀个线程的堆栈⼤⼩？⼀般你们写多少？" class="headerlink" title="StackOverFlow异常有没有遇到过？⼀般你猜测会在什么情况下被触 发？如何指定⼀个线程的堆栈⼤⼩？⼀般你们写多少？"></a>StackOverFlow异常有没有遇到过？⼀般你猜测会在什么情况下被触 发？如何指定⼀个线程的堆栈⼤⼩？⼀般你们写多少？</h5><blockquote>
-<p>栈内存溢出，一般由栈内存的局部变量过爆了，导致内存溢出，出现在递归方法，参数个数过多，递归过深，递归没有出口</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>答案如有不正确，还请各位指正</p>
-</blockquote>
+          你知道哪些或者你们线上使⽤什么GC策略? 它有什么优势，适⽤于什么 场景？
+参考 触发JVM进行Full GC的情况及应对策略
 
-          
+JAVA类加载器包括⼏种？它们之间的⽗⼦关系是怎么样的？双亲委派机 制是什么意思？有什么好处
+启动Bootstrap类加载、扩展Extension类加载、系统System
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/30/JVM面试题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -469,7 +372,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/08/JVM基本结构、内存模块/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="danqiusheng">
+      <meta itemprop="name" content="老码农">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -537,24 +440,21 @@
       
         
           
-            <h2 id="JVM基本结构图"><a href="#JVM基本结构图" class="headerlink" title="JVM基本结构图"></a>JVM基本结构图</h2><p><img src="/2018/03/08/JVM基本结构、内存模块/jg.jpg" alt="Markdown"></p>
-<ul>
-<li>PC寄存器</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1、每个线程拥有一个PC寄存器</span><br><span class="line">2、在线程创建时创建</span><br><span class="line">3、指向下一条指令的地址</span><br></pre></td></tr></table></figure>
-<h4 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1、保存装载的类信息</span><br><span class="line">    - 类型的常量池</span><br><span class="line">    - 字段、方法信息</span><br><span class="line">    - 方法字节码</span><br><span class="line">2、通常和永久区绑定在一起</span><br><span class="line">``` </span><br><span class="line">###  Java堆</span><br></pre></td></tr></table></figure>
-<p>1、所有线程共享Java堆<br>2、分新生代、老年代<br>3、新生代分s0  s1区<br>4、Java堆和程序数据密切相关<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 在绝大多数情况下，对象首先分配在eden区，在一次新生代回收之后，如果对象还存活，则进入s0或者s1，每经过一次新生代回收，对象如果存活，它的年龄就会加1。当对象的年龄达到一定条件后，就会被认为是老年对象，从而进入老年代。</span><br><span class="line"></span><br><span class="line">&gt; GC分代收集</span><br></pre></td></tr></table></figure></p>
-<p>package com.jvm;<br>public class SimpleHeap {<br>　　private int id;<br>　　public SimpleHeap(int id){<br>　　　　this.id = id;<br>　　}<br>　　public void show(){<br>　　　　System.out.println(“My id is “+id);<br>　　}</p>
-<p>　　public static void main(String[] args) {<br>　　　　SimpleHeap s1 = new SimpleHeap(1);<br>　　　　SimpleHeap s2 = new SimpleHeap(2);<br>　　　　s1.show();<br>　　　　s2.show();<br>　　}<br>}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![Markdown](http://i2.bvimg.com/634857/f410cf1a4a78d225.png)</span><br><span class="line"></span><br><span class="line">### Java栈</span><br></pre></td></tr></table></figure>
-<p>1、Java栈和线程执行相关<br>2、线程私有<br>3、先进后出<br>4、栈由一系列帧组成<br>5、静态方法和非静态方法 第一个局部变量的槽位不同，非静态第一个槽位是this的引用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- 局部变量表</span><br><span class="line"></span><br><span class="line">&gt; 局部变量表是栈帧的重要组成部分之一。它用于保存函数的参数以及局部变量，局部变量表中的变量只在当前函数调用中有效，当函数调用结束，随着函数栈帧的弹出销毁，局部变量表也会随之销毁。</span><br><span class="line"></span><br><span class="line">&gt; 由于局部变量表在栈帧之中，因此，如果函数的参数和局部变量很多，会使得局部变量表膨胀，从而每一次函数调用就会占用更多的栈空间，最终导致函数的嵌套调用次数减少。</span><br><span class="line"></span><br><span class="line">- 操作数栈</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- Java栈  栈上分配</span><br></pre></td></tr></table></figure></p>
-<p>1、小对象、栈上分配<br>2、大对象或者逃逸对象无法栈上分配<br>3、栈上分配，使用完毕，可以自动回收，减轻GC的压力<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">### 内存模型</span><br></pre></td></tr></table></figure></p>
-<p>1、每一个线程有一个工作内存和主内存独立<br>2、工作内存存放主存中的变量的值和拷贝<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">### 可见性</span><br></pre></td></tr></table></figure></p>
-<p>1、volatile关键字修饰<br>2、synchronize<br>3、final(一旦初始化完成，其他线程可见)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 有序性</span><br></pre></td></tr></table></figure></p>
-<p>1、一个线程内会有指令重排<br>2、synchronize修饰了函数，可以保证指一个线程内令重排后，其他线程读取到的值是最新的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 指令重排</span><br></pre></td></tr></table></figure></p>
-<p>1、程序顺序规则：首先保存程序顺序的前提下会出现指令重排<br>a=4;b= a+1; 这种情况不会指令重排<br>一个线程内保证语义的串行性<br>2、volatile规则：volatile变量的写，先发生于读<br>3、锁规则：解锁必然先发生在随后的加锁（lock）💰<br><code>`</code></p>
+          JVM基本结构图
 
-          
+PC寄存器
+
+1231、每个线程拥有一个PC寄存器2、在线程创建时创建3、指向下一条指令的地址
+方法区12345671、保存装载的类信息    - 类型的常量池    - 字段、方法信息    - 方法字节码2、通常和永久区绑定在一起``` ###  Java堆
+1、所有线程共享
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/08/JVM基本结构、内存模块/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -604,7 +504,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/07/JVM启动过程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="danqiusheng">
+      <meta itemprop="name" content="老码农">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -672,35 +572,29 @@
       
         
           
-            <h3 id="配置JVM装载环境"><a href="#配置JVM装载环境" class="headerlink" title="配置JVM装载环境"></a>配置JVM装载环境</h3><ul>
-<li>JVM.dll文件的查找</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1、通过JRE的路径找到JVM.cfg</span><br><span class="line">2、确定类型找到JVM.dll</span><br></pre></td></tr></table></figure>
-<ul>
-<li>JVM.dll文件装载</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1、LoadLirbary方法装载JVM.dll动态l连接库</span><br><span class="line">2、装载JVM环境完成</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>JVM参数解析（JavaVMOption）</p>
-</li>
-<li><p>参数处理</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1、-Xmn:设置新生代的大小NewSize和MaxNewSize</span><br><span class="line">2、-Xms:堆内存的初始大小 InitialHeapSize</span><br><span class="line">3、-Xmx:堆内存的最大值MaxHeapSize</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>参数验证</p>
-</li>
-<li><p>设置线程栈的大小</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-Xss 线程栈启动参数</span><br><span class="line">每个线程分配的内存大小，默认JDK1.4中是256K，JDK1.5+中是1M</span><br><span class="line"></span><br><span class="line">如果启动参数未设置-Xss，即threadStackSize为0，则调用InvocationFunctions的GetDefaultJavaVMInitArgs方法获取JavaVM的初始化参数，即调用JVM.dll函数JNI_GetDefaultJavaVMInitArgs，定义在share\vm\prims\jni.cpp</span><br><span class="line">ThreadStackSize定义在globals.hpp中，根据当前系统类型，加载对应的配置文件，所以在不同的系统中，ThreadStackSize的默认值也不同。</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行main方法</p>
-</li>
-</ul>
-<p>线程栈大小确定后，通过ContinueInNewThread方法创建新线程，并执行JavaMain函数，JavaMain函数的大概流程如下</p>
-<hr>
-<h6 id="1、新建JVM实例"><a href="#1、新建JVM实例" class="headerlink" title="1、新建JVM实例"></a>1、新建JVM实例</h6><h6 id="2、加载主类的class"><a href="#2、加载主类的class" class="headerlink" title="2、加载主类的class"></a>2、加载主类的class</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">分jar和class方式加载</span><br></pre></td></tr></table></figure>
-<h6 id="3、查找main方法"><a href="#3、查找main方法" class="headerlink" title="3、查找main方法"></a>3、查找main方法</h6><h6 id="3、执行main方法"><a href="#3、执行main方法" class="headerlink" title="3、执行main方法"></a>3、执行main方法</h6>
-          
+          配置JVM装载环境
+JVM.dll文件的查找
+
+121、通过JRE的路径找到JVM.cfg2、确定类型找到JVM.dll
+
+JVM.dll文件装载
+
+121、LoadLirbary方法装载JVM.dll动态l连接库2、装载JVM环境完成
+
+JVM参数解析（JavaVMOption）
+
+参数处理
+
+
+
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/07/JVM启动过程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -750,7 +644,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/java_learn_video/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="danqiusheng">
+      <meta itemprop="name" content="老码农">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -766,7 +660,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/06/java_learn_video/" itemprop="url">JAVA学习资源分享</a></h1>
+                <a class="post-title-link" href="/2018/03/06/java_learn_video/" itemprop="url">Java学习资源分享 - （持续更新...）</a></h1>
         
 
         <div class="post-meta">
@@ -778,7 +672,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-06T09:56:49+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-06T22:01:34+08:00">
                 2018-03-06
               </time>
             
@@ -788,6 +682,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -818,124 +734,15 @@
       
         
           
-            <font color="red" size="3">最高端的JAVA架构师资源（来自龙果学院 价值￥1399元）、JAVA互联网分布式架构（龙果学院 价值￥899元）、Spring Boot(2017年最新 包括源码原理分析) + Spring Cloud微服务架构(2017年最新 价值￥69和￥299两套实战)、大数据开发（龙果学院 价值￥299元）、Linux运维、MySQL性能调优（这些DB优化都是精华）、多线程高并发详解（龙果学院 价值￥889元）等等超过1500G精品视频！这些资源绝对不是在网上随随便便下载下来的！！！是本人最近走心积累、通过VIP充钱和直接购买别人资源而精心整理出的优质干货，总价值5000多元！<br> </font>
-
-<p><font color="red" size="3"><br>独乐乐不如众乐乐，全部心血精品资源仅仅只需99元！毫无保留全部分享给大家！！！</font></p>
-<font>
-
-<hr>
-<blockquote>
-<p>（公告：资源仅提供学习交流。如侵犯到任何版权问题，请立即告知本人，将及时予与删除并致以最深的歉意!）</p>
-</blockquote>
-<blockquote>
-<p>其实只要我们找对资源，愿意花时间去学习互联网最主流的技术，25K+绝不是吹的！<br> 本人也是程序员一枚， 开发搞了快6年，程序员加班熬夜的苦，我懂！</p>
-</blockquote>
-<h3 id="干货列表（包括如下但不限于以下内容-）"><a href="#干货列表（包括如下但不限于以下内容-）" class="headerlink" title="干货列表（包括如下但不限于以下内容 ）"></a>干货列表（包括如下但不限于以下内容 ）</h3><hr>
-<ul>
-<li>微服务架构的分布式事务解决方案（dubbo分布式事物处理）(来自龙果学院 价值￥1399)</li>
-<li>基于Dubbo分布式系统架构(龙果学院 价值￥899)</li>
-<li>打造扛得住双11激战的MySQL高并发高可用数据库架构(满满的都是干货)</li>
-<li>Java秒杀系统方案优化 高性能高并发实战（介绍多种缓存、分布式session、RabbitMq等）(来自慕课网 价值￥288)</li>
-<li>JAVA-ACE-架构师系列视频课程-RocketMq 2017最新 上下全套精讲(龙果学院 9折 价值￥1222)</li>
-<li>SpringBoot教程全套(龙果学院 价值￥199)</li>
-<li>从天气项目看Spring Cloud微服务治理(慕课网 价值￥299)</li>
-<li>Java并发编程原理与实战(龙果学院 价值￥899 一共63集精华都是你面试的优势！)</li>
-<li>Mysql高级核心技术(尚硅谷 价值￥19)</li>
-<li>大数据实时流统计实战(龙果学院 价值￥299)</li>
-<li>一系列黑客技术精华视频(价值好几千，内容较多，后面截图介绍)</li>
-<li>java架构师资源(24G)(大部分程序员修成正果必经之路)</li>
-<li>Netty、Mina、Nio(Netty异步NIO框架 高并发)</li>
-<li>Redis、MongoDB、Memcached(只会MySQL就out了！NoSQL数据库应用广泛，面试曾被问Redis缓存)</li>
-<li>zookeeper、storm、Solr(zookeeper分布式应用协调系统 拿高薪必会)</li>
-<li>Docker(应用容器，搭配Spring Cloud构建微服务)</li>
-<li>Nginx、LVS+Keepalived</li>
-<li>Openstack、Sca</li>
-<li>JAVA8新特性</li>
-<li>MyCat</li>
-<li>Mysql性能优化(三年经验以上，面试必被问，跑不掉)</li>
-<li>java设计模式、List和Map等集合底层算法原理(三年经验以上，面试必被问)</li>
-<li>深入JVM内核、原理、诊断和优化(三年经验以上，面试必被问)</li>
-<li>多线程(三年经验以上，面试必问：内存模型、内存可见性、volatile、synschonized等)</li>
-<li>Spring、SpringMVC和Mybatis(很多企业都在用SSM框架，代替SSH)</li>
-<li>Linux初中高级运维</li>
-<li>还有很多其他系列高价值的干货，由于篇幅有限，不一一介绍了…如果你想要的视频在这里找不到的话 可以Q我！</li>
-</ul>
-<hr>
-<blockquote>
-<p><strong>童鞋们：<br>程序员有中年危机的主要原因之一是：30岁之后还是只会增删改查…年后不进取继续混日子…<br>每年都有几百万的大学毕业生涌入市场。他们年轻力壮，要求低，能吃苦。<br>如果你安于现状，不去学习最新主流技术时时刻刻保持竞争力，拿什么和年轻人竞争？凭什么拿高薪呢？</strong></p>
-</blockquote>
-<h3 id="资源总大小（超过1500G，请先准备百度云空间哈）"><a href="#资源总大小（超过1500G，请先准备百度云空间哈）" class="headerlink" title="资源总大小（超过1500G，请先准备百度云空间哈）"></a>资源总大小（超过1500G，请先准备百度云空间哈）</h3><p><img src="/2018/03/06/java_learn_video/totalSize1.png" alt="总共大小"><br><img src="/2018/03/06/java_learn_video/totalSize2.png" alt="总共大小"></p>
-<blockquote>
-<p>注意!<br>以下是本人最近精心整理的资源，现在狂甩出来</p>
-</blockquote>
-<h3 id="部分资源截图"><a href="#部分资源截图" class="headerlink" title="部分资源截图"></a>部分资源截图</h3><ul>
-<li><p>以下是微服务架构的分布式事务解决方案（dubbo分布式事物处理），原地址：<a href="http://www.roncoo.com/course/view/7ae3d7eddc4742f78b0548aa8bd9ccdb" target="_blank" rel="noopener">http://www.roncoo.com/course/view/7ae3d7eddc4742f78b0548aa8bd9ccdb</a><br><img src="/2018/03/06/java_learn_video/Dubboshiwu1.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/Dubboshiwu2.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/Dubboshiwu3.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/Dubboshiwu4.png" alt="Markdown"></p>
-</li>
-<li><p>以下是基于Dubbo的分布式系统架构实战，原地址：<a href="http://www.roncoo.com/course/view/85d6008fe77c4199b0cdd2885eaeee53#boxTwo" target="_blank" rel="noopener">http://www.roncoo.com/course/view/85d6008fe77c4199b0cdd2885eaeee53#boxTwo</a><br><img src="/2018/03/06/java_learn_video/dubbojiagou1.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/dubbojiagou2.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/dubbojiagou3.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/dubbojiagou4.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/dubbojiagou5.png" alt="Markdown"></p>
-</li>
-<li><p>以下是Java秒杀系统方案优化 高性能高并发实战（介绍多种缓存、分布式session、RabbitMq等），原地址：<a href="http://coding.imooc.com/class/168.html" target="_blank" rel="noopener">http://coding.imooc.com/class/168.html</a><br><img src="/2018/03/06/java_learn_video/miaosha1.jpg" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/miaosha2.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/miaosha3.png" alt="Markdown"> </p>
-</li>
-<li><p>以下是JAVA-ACE-架构师系列视频课程-RocketMq 2017最新 上下全套精讲，原地址：<a href="http://edu.51cto.com/topic/1028.html" target="_blank" rel="noopener">http://edu.51cto.com/topic/1028.html</a></p>
-</li>
-</ul>
-<p><img src="/2018/03/06/java_learn_video/RocketMq1.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/RocketMq2.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/RocketMq3.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/RocketMq4.png" alt="Markdown"></p>
-<ul>
-<li><p>以下是SpringBoot教程全套，原地址：<a href="http://www.roncoo.com/course/view/c99516ea604d4053908c1768d6deee3d#boxTwo" target="_blank" rel="noopener">http://www.roncoo.com/course/view/c99516ea604d4053908c1768d6deee3d#boxTwo</a><br><img src="/2018/03/06/java_learn_video/SpringBoot1.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/Springboot2.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/SpringbootSL.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/SpringBoot.png" alt="Markdown"></p>
-</li>
-<li><p>以下是从天气项目看Spring Cloud微服务治理，原地址：<a href="http://coding.imooc.com/class/177.html?mc_marking=a7b3119105f0cbb234506fc15f6bfbc4&amp;mc_channel=syb8" target="_blank" rel="noopener">http://coding.imooc.com/class/177.html?mc_marking=a7b3119105f0cbb234506fc15f6bfbc4&amp;mc_channel=syb8</a></p>
-</li>
-</ul>
-<p><img src="/2018/03/06/java_learn_video/springcloudtianqi1.jpg" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/springcloudtianqi2.png" alt="Markdown"></p>
-<ul>
-<li>以下是Java并发编程原理与实战，原地址：<a href="http://www.roncoo.com/course/view/b6f89747a8284f44838b2c4da6c8677b" target="_blank" rel="noopener">http://www.roncoo.com/course/view/b6f89747a8284f44838b2c4da6c8677b</a></li>
-</ul>
-<p><img src="/2018/03/06/java_learn_video/gao1.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/gao2.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/gao3.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/gao4.png" alt="Markdown"> </p>
-<ul>
-<li><p>以下是Mysql高级核心技术<br><img src="/2018/03/06/java_learn_video/mysqlgao1.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/mysqlgao2.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/mysqlgao3.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/mysql.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/mysql1.png" alt="Markdown"> </p>
-</li>
-<li><p>以下是一系列黑客技术精华视频 价值好几千!<br><img src="/2018/03/06/java_learn_video/heike.png" alt="Markdown">  </p>
-</li>
-<li><p>以下是SpringBoot精品视频，资源是2017年最新的！（限于篇幅，不一一截图介绍了）</p>
-</li>
-</ul>
-<blockquote>
-<p>SpringBoot企业级博客系统实战视频教程（价值￥348） 原地址:<a href="http://coding.imooc.com/class/125.html" target="_blank" rel="noopener">http://coding.imooc.com/class/125.html</a><br>spring boot企业微信点餐系统（价值￥348） 原地址:<a href="http://coding.imooc.com/class/117.html" target="_blank" rel="noopener">http://coding.imooc.com/class/117.html</a><br>Spring Boot实战与原理分析视频课程（价值￥359） 原地址:<a href="http://edu.51cto.com/course/6558.html" target="_blank" rel="noopener">http://edu.51cto.com/course/6558.html</a><br>SSM到Spring Boot-从零开发校园商铺平台（价值￥299） 原地址:<a href="http://coding.imooc.com/class/144.html" target="_blank" rel="noopener">http://coding.imooc.com/class/144.html</a><br>龙果学院 Spring Boot教程全集（价值￥199） 原地址:<a href="http://www.roncoo.com/course/view/c99516ea604d4053908c1768d6deee3d#boxTwo" target="_blank" rel="noopener">http://www.roncoo.com/course/view/c99516ea604d4053908c1768d6deee3d#boxTwo</a></p>
-</blockquote>
-<p><img src="/2018/03/06/java_learn_video/SpringBootganhuo.png" alt="Markdown">  </p>
-<ul>
-<li>以下是在51CTO花62块购买的SpringCloud干货，也是2017年最新的！原地址： <a href="http://edu.51cto.com/course/7348.html" target="_blank" rel="noopener">http://edu.51cto.com/course/7348.html</a></li>
-</ul>
-<p><img src="/2018/03/06/java_learn_video/SpringCloud51cto.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/SpringCloud1.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/SpringCloud2.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/SpringCloud3.png" alt="Markdown">  </p>
-<ul>
-<li>以下是大数据实时流统计实战，原地址：<a href="http://www.roncoo.com/course/view/1b1a07091acc4efd9a390f28db332f86" target="_blank" rel="noopener">http://www.roncoo.com/course/view/1b1a07091acc4efd9a390f28db332f86</a></li>
-</ul>
-<p><img src="/2018/03/06/java_learn_video/dashuju1.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/dashuju2.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/dashuju3.png" alt="Markdown">  </p>
-<ul>
-<li>以下是Hadoop Spark精品视频<br><img src="/2018/03/06/java_learn_video/hadoop.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/hadoop2.png" alt="Markdown"> </li>
-</ul>
-<ul>
-<li>篇幅有限；只能部分目录截图</li>
-</ul>
-<p><img src="/2018/03/06/java_learn_video/mysqlyouhua.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/shiro.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/SSM.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/jvm.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/jiagoushi.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/jiagoushi1.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/mulu.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/fufei.png" alt="Markdown"><br><img src="/2018/03/06/java_learn_video/fufei2.png" alt="Markdown"></p>
-<hr>
-<blockquote>
-<p>卖家承诺：绝对不是随随便便在网上下载的资源，通用播放器都可以看，没有加密！看书，只是理解(对于新手 关键的地方不一定能get到)，少了可视化的实践练手，看书一周后就不记得了。效率略低，深有体会。真心没有视频手把手教学跟着练手做项目学得快！看视频入门后再去看书，会事半功倍！跟着视频学习是略慢，但学到的就是经验了！</p>
-</blockquote>
-<blockquote>
-<p>这些优质资源都是本人花钱买的！总价值5000多干货，全部资源只需99元！99块这点学习投资费都不够请朋友吃半餐饭钱</p>
-</blockquote>
-<!-- ![Markdown](java_learn_video/qqqr.jpeg = 200x) -->
-<h3 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h3><p><strong><em> 有意向请联系小Q：1285531788，付款后立马百度云发货哈！</em></strong></p>
-<p><img src="/2018/03/06/java_learn_video/qqqr.jpeg" width="200"></p>
-<blockquote>
-<p>绝不做骗钱不发货犯法的事，由于篇幅有限，其他很多干货还没有介绍哦！</p>
-</blockquote>
-<blockquote>
-<p>如果你想要的视频在这里找不到的话 可以Q我！欢迎试看视频！怕被骗或者非诚心购买者勿扰</p>
-</blockquote>
-<p><center>  祝早日拿到高薪offer! </center></p>
-</font>
-          
+          最高端的JAVA架构师资源（来自龙果学院 价值￥1399元）、JAVA互联网分布式架构（龙果学院 价值￥899元）、Spring Boot(2017年最新 包括源码原理分析) + Spring Cloud微服务架构(2017年最新 价值￥69和￥299两套实战)、大数据开发（龙果学院 价值￥299元
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/06/java_learn_video/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1004,7 +811,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">danqiusheng</p>
+              <p class="site-author-name" itemprop="name">老码农</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
@@ -1021,6 +828,15 @@
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
             
 
             
@@ -1069,7 +885,7 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">danqiusheng</span>
+  <span class="author" itemprop="copyrightHolder">老码农</span>
 
   
 </div>
